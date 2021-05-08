@@ -3,27 +3,32 @@
         <div>
             <v-card flat>
                 <v-card-text>
-                    <v-row  class="px-4">
-                        <div>
-                            Search for the centers using Pincode or State.
-                        </div>
-                    </v-row>
                     <v-row>
-                        <v-col cols="12" sm="5" md="5">
-                            <v-text-field v-model="pincode" label="Enter 6 digit Pincode" placeholder="110001" outlined clearable dense small></v-text-field>
+                        <v-col cols="12" sm="3" md="3" lg="3"></v-col>
+                        <v-col cols="12" sm="6" md="6" lg="6">
+                        <v-autocomplete
+                            v-model="model"
+                            :items="items"
+                            :loading="isLoading"
+                            :search-input.sync="search"
+                            clearable
+                            hide-details
+                            hide-selected
+                            hide-no-data
+                            item-text="name"
+                            item-value="id"
+                            label="Search for a coin ..."
+                            solo
+                            dense
+                        ></v-autocomplete>
                         </v-col>
-                        <v-col cols="12" sm="5" md="5">
-                            <v-select v-model="state" :items="items" label="Select State" placeholder="Delhi" outlined clearable dense></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="2" md="2">
-                            <v-btn class="mt-1" color="#FFAAAA" block :disabled="disable[0] && disable[1]" @click="searchCenters">Search</v-btn>
-                        </v-col>
+                        <v-col cols="12" sm="3" md="3" lg="3"></v-col>
                     </v-row>
                 </v-card-text>
             </v-card>
              
         </div>
-       <div>
+       <!-- <div>
            <v-row justify="start">
                <v-col v-for="(slot, index) in slots" :key="index" cols="12"  sm="6" md="4">
                    <v-card class="mx-auto" max-width="344" >
@@ -60,7 +65,7 @@
                </v-col>
            </v-row>
            
-       </div>
+       </div> -->
     
     </v-container>
 </template>
@@ -68,44 +73,56 @@
 import { mapGetters } from 'vuex'
   export default {
       computed:{
-        ...mapGetters('search', {
-      centerSlots: 'getSlots'
+        ...mapGetters('register', {
+      firstnames: 'getFirstnames'
     })
     },
     data () {
       return {
-        pincode:null,
-        state:null,
-        items:[
-            'Delhi',
-            'Karnataka',
-            'Maharashtra',
-            'Uttar Pradesh'
-        ],
+        isLoading: false,
+        model: null,
+        search: null,
         filter:{},
-        disable:[true, true],
-        slots:[]
+        items:[],
+        coin:null
       }
     },
     watch: {
-      pincode (val) {
-        if(val && val.length === 6){
-            this.state = null
-            this.disable[0] = false
-            this.filter = {'pincode':val}
-        }else{
-            this.disable[0] = true
-        }
-      },
-      state (val) {
-          if(val){
-              this.pincode = null
-              this.disable[1] = false
-              this.filter = {'state':val}
-          }else{
-              this.disable[1] = true
-          }
-      }
+        /* eslint-disable */
+        model (val) {
+        // console.log(val)
+
+        fetch(`https://api.coingecko.com/api/v3/coins/${val}`)
+            .then(res => res.clone().json())
+            .then(res => {
+                console.log(res)
+                this.coin = res
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+        },
+        /* eslint-disable */
+        search (val) {
+            // console.log(val)
+            // Items have already been loaded
+            if (this.items.length > 0) return
+
+            this.isLoading = true
+
+            // Lazily load input items
+            fetch('https://api.coingecko.com/api/v3/coins/list')
+            .then(res => res.clone().json())
+            .then(res => {
+                // console.log(res)
+                this.items = res
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            .finally(() => (this.isLoading = false))
+        },
     },
     methods: {
       async searchCenters(){
@@ -115,25 +132,11 @@ import { mapGetters } from 'vuex'
     },
     mounted(){
         // console.log(this.centerSlots)
-        this.$store.commit('search/setSlots',[])        
+        // this.$store.commit('search/setSlots',[])        
     }
   }
 </script>
 <style scoped>
-.myGrid {
-  display: grid;
-  grid-template-columns: auto auto auto;         
-  grid-template-rows: repeat(3, 1fr) auto auto; 
-  grid-template-areas: 
-    "orange indigo1 red"
-    "orange indigo2 red"
-    "orange indigo3 red"
-    "purple green red"
-    "purple green blue"
-    ;
-  grid-gap: 0.5rem;
-  max-width: 600px;
-}
 
 .v-card--reveal {
   bottom: 0;

@@ -1,24 +1,24 @@
 <template>
   <v-app class="#FFAAAA"> 
     <v-app-bar color="#D46A6A" dark app flat>
-      <v-toolbar-title>Vue + Vuetify + Vuex Store</v-toolbar-title>
+      <v-toolbar-title>DogeXchange</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
       <template v-slot:activator="{ on, attrs }">
         <v-btn icon @click="showSearch=true" v-bind="attrs" v-on="on">
-          <v-icon>mdi-crosshairs</v-icon>
+          <v-icon>mdi-currency-btc</v-icon>
       </v-btn>
       </template>
-      <span>Profile</span>
+      <span>Exchange</span>
     </v-tooltip>
-    <v-tooltip bottom>
+    <!-- <v-tooltip bottom>
       <template v-slot:activator="{ on, attrs }">
         <v-btn icon @click="showSearch=false" v-bind="attrs" v-on="on">
           <v-icon>mdi-account-plus</v-icon>
       </v-btn>
       </template>
-      <span>Register</span>
-    </v-tooltip>
+      <span>Profile</span>
+    </v-tooltip> -->
     </v-app-bar>
 
     

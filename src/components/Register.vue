@@ -1,33 +1,39 @@
 <template>
     <v-container fluid >
-    <v-card flat tile >
-        <v-card-text class="d-flex justify-center" max-width="500" >
-            <v-card flat align="center">
-                <v-card-subtitle>
-                    Register a user matey!
-                </v-card-subtitle>
-                <v-card-text>
-                    <v-form ref="form" v-model="valid" lazy-validation>
-                    
-                        <v-text-field v-model="firstname" :counter="10" :rules="nameRules" label="First Name" required outlined dense></v-text-field>
+    <v-card flat tile class="justify-center">
+        <v-card-text > 
+            <v-row>
+                <v-col cols="12" sm="3" md="3"></v-col>
+                <v-col cols="12" sm="6" md="6">
+                    <v-card flat max-width="500px" align="center">
+                        <v-card-subtitle>
+                            Register a user matey!
+                        </v-card-subtitle>
+                        <v-card-text>
+                            <v-form ref="form" v-model="valid" lazy-validation>
+                            
+                                <v-text-field v-model="firstName" :counter="10" :rules="nameRules" label="First Name" required outlined dense></v-text-field>
 
-                        <v-text-field v-model="lastname" :counter="10" :rules="nameRules" label="Last Name" required outlined dense></v-text-field> 
+                                <v-text-field v-model="lastName" :counter="10" :rules="nameRules" label="Last Name" required outlined dense></v-text-field> 
 
-                        <v-text-field v-model="email" :rules="emailRules" label="E-mail" required outlined dense></v-text-field>
+                                <v-text-field v-model="email" :rules="emailRules" label="E-mail" required outlined dense></v-text-field>
 
-                        <v-text-field v-model="pincode" :counter="6" :rules="pincodeRules" label="Pincode" required outlined dense></v-text-field>
+                                <v-text-field v-model="pincode" :counter="6" :rules="pincodeRules" label="Pincode" required outlined dense></v-text-field>
 
-                        <v-text-field v-model="age" :counter="3" :rules="ageRules" label="Age" required outlined dense></v-text-field>
+                                <v-text-field v-model="age" :counter="3" :rules="ageRules" label="Age" required outlined dense></v-text-field>
 
-                        <v-select v-model="select" :items="items" label="Gender" outlined dense></v-select>
+                                <v-select v-model="select" :items="items" label="Gender" outlined dense></v-select>
 
-                        <v-checkbox v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" label="I agree" required dense small></v-checkbox>
+                                <v-checkbox v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" label="I agree" required dense small></v-checkbox>
 
-                        <v-btn :disabled="!valid" color="success" class="mr-4" @click="registerUser"> Subscribe </v-btn>
-                    </v-form>
-                </v-card-text>
-                
-            </v-card>
+                                <v-btn :disabled="!valid" color="success" class="mr-4" @click="registerUser"> Subscribe </v-btn>
+                            </v-form>
+                        </v-card-text>
+                        
+                    </v-card>
+                </v-col>
+                <v-col cols="12" sm="3" md="3"></v-col>
+            </v-row>
         </v-card-text>
       
     </v-card>
@@ -38,8 +44,8 @@ import { mapGetters } from 'vuex'
 
 export default {
     computed:{
-        ...mapGetters('search', {  
-            // 
+        ...mapGetters('register', {  
+            users: 'getUsers'
     })
     },
     data () {
@@ -64,7 +70,7 @@ export default {
         age: '',
         ageRules: [
             v => !!v || 'Age is required',
-            v => (v>17 && v<70 )|| 'Age must be between 18 and 70',
+            v => (v>0 && v<150 )|| 'Age must be valid',
         ],
         select: null,
         items: [
@@ -88,6 +94,9 @@ export default {
     //   resetValidation () {
     //     this.$refs.form.resetValidation()
     //   },
+
+    // class="d-flex justify-center"
+    //  flat align="center"
         async registerUser(){
             let val = this.$refs.form.validate()
 
@@ -102,6 +111,8 @@ export default {
                 }
 
                 await this.$store.dispatch('register/register', userData)
+                console.log(this.users)
+                // this.$refs.form.reset()
             }
             
         }

@@ -3,14 +3,18 @@
 
 // state
 const state = () => ({
-    user:''
+    users:[],
+    firstnames:[]
 })
 
 // getters
 const getters = {
-    getUser:(state) => {
-        return state.user
-      }
+    getUsers:(state) => {
+      return state.users
+    },
+    getFirstnames:(state) => {
+      return state.firstnames
+    }
 }
 
 // actions
@@ -18,13 +22,20 @@ const actions = {
   async register({commit}, userData){
     console.log(userData)
     commit('setUser', userData)
+    commit('setFirstname', userData.firstName)
   }
 }
 
 // mutations
 const mutations = {
     setUser(state,data){
-        state.user = data
+        state.users.push(data)
+    },
+    clearUserData(state, data){
+        state.users = data
+    },
+    setFirstname(state, data){
+      state.firstnames.push(data)
     }
 }
 
