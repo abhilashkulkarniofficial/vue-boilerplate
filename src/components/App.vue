@@ -1,7 +1,7 @@
 <template>
   <v-app class="#FFAAAA"> 
     <v-app-bar color="#D46A6A" dark app flat>
-      <v-toolbar-title>DogeXchange</v-toolbar-title>
+      <v-toolbar-title>CryptXchange</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
       <template v-slot:activator="{ on, attrs }">
