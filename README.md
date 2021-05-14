@@ -1,6 +1,28 @@
-# vaccine-availability-app
+# Vue Boilerplate
 
 ## Project setup
+
+### Clone the project and enter the project folder
+```
+git clone https://github.com/abhilashkulkarniofficial/vue-boilerplate.git
+
+cd vue-boilerplate
+```
+
+### Open project using VSCode
+
+Download VSCode and install using the following [guide by VSCode](https://code.visualstudio.com/download)
+
+[Launch the project using command line](https://code.visualstudio.com/docs/editor/command-line#_launching-from-command-line)
+
+```
+code .
+```
+
+Open terminal in VSCode and run the rest of the commands.
+
+### Install the packages locally
+
 ```
 npm install
 ```
@@ -10,15 +32,66 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+## Build and deploy the app on github pages
+
+### Create a repository on github
+
+Follow this [guide by Github](https://docs.github.com/en/github/getting-started-with-github/create-a-repo) to create a repository.
+
+You can choose any name of the repo. Just make sure to follow the next steps too.
+
+### Update repo name in project
+
+Open vue.config.js and change the public path to the name of the repository in Github.
+
+Open package.json and change the name and update package-lock.json
+
 ```
-npm run build
+npm i --package-lock-only
 ```
 
-### Lints and fixes files
+### Add repo to project
+
+Add the remote github repo to your project
+
 ```
-npm run lint
+git remote add origin [repo-url]
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Check the status of the remote origin
+
+```
+git remote -v
+```
+
+### Push changes
+
+Commit the changes in VSCode using the following [guide by VSCode](https://code.visualstudio.com/docs/editor/versioncontrol#_commit) or 
+using the following command.
+
+```
+git commit -m "Commit message"
+```
+
+Push the code to remote origin
+
+```
+git push -u origin main
+```
+
+
+### Deploy the to github pages
+
+Run the deployment script.
+
+```
+npm run gh-pages-deploy
+```
+
+### Enable Github pages
+
+In your repository go to Settings -> Pages -> Change source to gh-pages branch and click save. Wait for 2 - 10 minutes for the deployment.
+
+You will get a link to the page. Viola!!!
+
+*The credit for this easy method to deploy your project on github pages goes to Roland Doda's article [Deploy to Github Pages like a pro with Github Actions](https://dev.to/rolanddoda/deploy-to-github-pages-like-a-pro-with-github-actions-4hdg)*

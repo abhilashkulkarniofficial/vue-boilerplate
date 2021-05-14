@@ -19,7 +19,6 @@
                             item-value="id"
                             label="Search for a coin ..."
                             solo
-                            dense
                         ></v-autocomplete>
                         </v-col>
                         <v-col cols="12" sm="3" md="3" lg="3"></v-col>
