@@ -11,17 +11,7 @@
       </template>
       <span>Exchange</span>
     </v-tooltip>
-    <!-- <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn icon @click="showSearch=false" v-bind="attrs" v-on="on">
-          <v-icon>mdi-account-plus</v-icon>
-      </v-btn>
-      </template>
-      <span>Profile</span>
-    </v-tooltip> -->
     </v-app-bar>
-
-    
 
     <v-main>
       <Search v-if="showSearch"/>
@@ -30,7 +20,7 @@
 
     <v-footer padless color="white">
     <v-col class="text-center text-caption" cols="12">
-      Stay Home. Stay Safe.
+      Work in Progress. Stay Home. Stay Safe.
     </v-col>
   </v-footer>
 

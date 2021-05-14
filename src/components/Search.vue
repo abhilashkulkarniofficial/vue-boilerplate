@@ -27,44 +27,6 @@
             </v-card>
              
         </div>
-       <!-- <div>
-           <v-row justify="start">
-               <v-col v-for="(slot, index) in slots" :key="index" cols="12"  sm="6" md="4">
-                   <v-card class="mx-auto" max-width="344" >
-                        <v-card-text>
-                        <p class="h3 text--primary text-center"> <strong> {{slot.name}} </strong> </p>
-                        <div class="text--primary">
-                            <strong>Date:</strong> {{slot.date}}<br/>
-                            <strong>Address:</strong><br/>
-                            {{slot.block_name}}, {{slot.state_name}} - {{slot.pincode}}
-                        </div>
-                        </v-card-text>
-                        <v-card-actions>
-                        <v-btn text color="teal accent-4" small @click="slot.reveal = true">
-                            Slots
-                        </v-btn>
-                        </v-card-actions>
-
-                        <v-expand-transition>
-                        <v-card v-if="slot.reveal" class="transition-fast-in-fast-out v-card--reveal py-0" style="height: 100%;">
-                            <v-card-text class="py-1">
-                            <p class="h2 text--primary text-center mb-3"> <strong> Slots </strong>  </p>
-                            <v-row justify="center" v-for="(time,index) in slot.slots" :key="index">
-                                <p class="text--primary my-1"> {{time}} </p>
-                            </v-row>
-                            </v-card-text>
-                            <v-card-actions class="justify-center">
-                            <v-btn text color="teal accent-4" @click="slot.reveal = false" small >
-                                Close
-                            </v-btn>
-                            </v-card-actions>
-                        </v-card>
-                        </v-expand-transition>
-                    </v-card>
-               </v-col>
-           </v-row>
-           
-       </div> -->
     
     </v-container>
 </template>
