@@ -3,26 +3,29 @@
         <div>
             <v-card flat>
                 <v-card-text>
-                    <v-row>
-                        <v-col cols="12" sm="3" md="3" lg="3"></v-col>
-                        <v-col cols="12" sm="6" md="6" lg="6">
-                        <v-autocomplete
-                            v-model="model"
-                            :items="items"
-                            :loading="isLoading"
-                            :search-input.sync="search"
-                            clearable
-                            hide-details
-                            hide-selected
-                            hide-no-data
-                            item-text="name"
-                            item-value="id"
-                            label="Search for a coin ..."
-                            solo
-                        ></v-autocomplete>
-                        </v-col>
-                        <v-col cols="12" sm="3" md="3" lg="3"></v-col>
-                    </v-row>
+                    <v-container grid-list-md text-xs-center>
+                        <v-layout row wrap>
+                            <v-flex offset-md4 xs12 sm12 md4>
+                                <v-autocomplete
+                                    v-model="model"
+                                    :items="items"
+                                    :loading="isLoading"
+                                    :search-input.sync="search"
+                                    clearable
+                                    hide-details
+                                    hide-selected
+                                    hide-no-data
+                                    item-text="name"
+                                    item-value="id"
+                                    label="Search for a coin ..."
+                                    solo
+                                ></v-autocomplete>
+                            </v-flex>
+                            <v-flex offset-md4 xs12 sm12 md4 mt-2>
+                                <Date label="Select Date"/>
+                            </v-flex>
+                        </v-layout>
+                      </v-container>
                 </v-card-text>
             </v-card>
              
@@ -32,7 +35,9 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import Date from '../basic/date'
   export default {
+      components:{Date},
       computed:{
         ...mapGetters('register', {
       firstnames: 'getFirstnames'

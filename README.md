@@ -2,14 +2,14 @@
 
 ## Project setup
 
-### Clone the project and enter the project folder
+#### Clone the project and enter the project folder
 ```
 git clone https://github.com/abhilashkulkarniofficial/vue-boilerplate.git
 
 cd vue-boilerplate
 ```
 
-### Open project using VSCode
+#### Open project using VSCode
 
 Download VSCode and install using the following [guide by VSCode](https://code.visualstudio.com/download)
 
@@ -21,13 +21,13 @@ code .
 
 Open terminal in VSCode and run the rest of the commands.
 
-### Install the packages locally
+#### Install the packages locally
 
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
