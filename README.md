@@ -1,4 +1,20 @@
+<!-- ![GitHub package.json version](https://img.shields.io/github/package-json/v/abhilashkulkarniofficial/vue-boilerplate)
+[![GitHub issues](https://img.shields.io/github/issues/abhilashkulkarniofficial/vue-boilerplate)](https://github.com/abhilashkulkarniofficial/vue-boilerplate/issues)
+[![GitHub forks](https://img.shields.io/github/forks/abhilashkulkarniofficial/vue-boilerplate?color=yellow)](https://github.com/abhilashkulkarniofficial/vue-boilerplate/network)
+[![GitHub stars](https://img.shields.io/github/stars/abhilashkulkarniofficial/vue-boilerplate)](https://github.com/abhilashkulkarniofficial/vue-boilerplate/stargazers) -->
+<!-- [![npm](https://img.shields.io/npm/v/vue.svg)](https://www.npmjs.com/package/vue) -->
+
 # Vue Boilerplate
+
+## Technology Stack
+
+
+Vue [![npm](https://img.shields.io/npm/v/vue.svg)](https://www.npmjs.com/package/vue)
+
+Vuex [![npm](https://img.shields.io/npm/v/vuex.svg)](https://www.npmjs.com/package/vuex)
+
+Vuetify [![npm](https://img.shields.io/npm/v/vuetify.svg)](https://www.npmjs.com/package/vuetify)
+
 
 ## Project setup
 
