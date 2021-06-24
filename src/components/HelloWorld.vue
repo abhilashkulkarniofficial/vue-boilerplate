@@ -3,47 +3,57 @@
     <v-row class="text-center">
       <v-col cols="12">
         <v-img
-          :src="require('../../public/favicon.svg')"
-          class="my-3"
+          :src="require('../assets/logo1.png')"
+          class="my-1"
           contain
-          height="150"
+          height="100"
         />
       </v-col>
 
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
+      <v-col class="mb-1">
+        <h3 class="display-1 font-weight-bold mb-3">
           Welcome to Vue Boilerplate
-        </h1>
+        </h3>
 
         <p class="subheading font-weight-regular">
-          For help and collaboration,
-          <br>please join my online
+          Checkout my 
+          <a
+            href="https://github.com/abhilashkulkarniofficial"
+            target="_blank"
+          >Github Projects</a>
+          and please join my online
           <a
             href="https://discord.gg/8V624U6KXu"
             target="_blank"
           >Discord Community</a>
+          to collaborate. Cheers 🍻
         </p>
       </v-col>
 
       <v-col
-        class="mb-5"
+        class="mb-1"
         cols="12"
       >
         <h2 class="headline font-weight-bold mb-3">
-          What's next?
+          Install and get started
         </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
+      <v-row class="text-center">
+        <v-col cols="2"></v-col>
+        <v-col cols="8">
+        <code-highlight language="javascript">
+  <pre>
+      // Fork and clone the repository
+      >> git clone https://github.com/[YOUR-GITHUB-USERNAME]/vue-boilerplate
+      // Navigate to folder and launch the project on VSCode
+      >> cd vue-boilerplate
+      >> code -a .
+      // Install packages locally and start the project
+      >> npm install
+      >> npm run serve
+ </pre>
+</code-highlight>
+</v-col>
+      </v-row>
       </v-col>
 
       <v-col
@@ -51,40 +61,17 @@
         cols="12"
       >
         <h2 class="headline font-weight-bold mb-3">
-          Important Links
+          Tech Stack
         </h2>
 
         <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
+          <span
+            v-for="(stack, i) in techStack"
             :key="i"
-            :href="link.href"
             class="subheading mx-3"
-            target="_blank"
           >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
+            {{ stack.text }}
+          </span>
         </v-row>
       </v-col>
     </v-row>
@@ -92,60 +79,29 @@
 </template>
 
 <script>
+import CodeHighlight from "vue-code-highlight/src/CodeHighlight.vue";
+import "vue-code-highlight/themes/prism-tomorrow.css";
+import "vue-code-highlight/themes/window.css";
   export default {
     name: 'HelloWorld',
-
+    components:{
+  CodeHighlight,
+},
     data: () => ({
-      ecosystem: [
+      techStack: [
         {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
+          text: 'Vue.JS',
         },
         {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
+          text: 'Vuetify',
         },
         {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
+          text: 'Vuex Store',
         },
         {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
+          text: 'Vue-Router',
+        }
+      ]
     }),
   }
 </script>

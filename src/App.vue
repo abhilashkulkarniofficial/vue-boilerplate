@@ -10,7 +10,7 @@
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://firebasestorage.googleapis.com/v0/b/abhilash-kulkarni-bucket.appspot.com/o/myicon.png?alt=media&token=acb98d0c-d472-4246-818f-c88aef6a5f00"
+          :src="require('../public/favicon.svg')"
           transition="scale-transition"
           width="40"
         />
@@ -28,20 +28,22 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
-      <HelloWorld/>
+     <v-main>
+      
+      <router-view></router-view>
+      
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+// import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
 
   data: () => ({
